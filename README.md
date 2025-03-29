@@ -6,7 +6,7 @@ Welcome to the University Course Registration System, a structured and efficient
 
 🎯 Features
 
-1- Linked List Implementation – Courses are stored in a linked list for dynamic management.
+1- Linked List Implementation – Courses are stored in a linked list for dynamic management.<br>
 2- Waitlist Management – A FIFO Queue ensures students are enrolled in the order they apply when a spot becomes available.
 3- Undo Functionality – A Stack allows administrators to revert the last registration action if needed.
 4- Efficient Searching & Sorting – Uses Binary Search for quick course lookup and Quick Sort for organizing courses based on enrollment numbers.
