@@ -33,6 +33,7 @@ public class UniversityCourseSystem {
 
             if (action.wasWaitlisted) {
                 action.course.waitlist.remove(action.student);
+                System.out.println("Undid registration for " + action.student.name + " from waitlist in " + action.course.name);
             } else {
                 action.course.removeStudent(action.student);
                 System.out.println("Undid registration for " + action.student.name + " from " + action.course.name);
@@ -45,7 +46,6 @@ public class UniversityCourseSystem {
                 }
             }
 
-            System.out.println("Undid registration for " + action.student.name + " from " + action.course.name);
         } else {
             System.out.println("No actions to undo.");
         }
@@ -58,7 +58,11 @@ public class UniversityCourseSystem {
         Arrays.sort(courses, Comparator.comparing(c -> c.name));
 
         int index = binarySearch(courses, courseName);
-        return index >= 0 ? courses[index] : null;
+        if (index >= 0) {
+            return courses[index];
+        } else {
+            return null;
+        }
     }
 
     private int binarySearch(Course[] courses, String courseName) {
@@ -73,7 +77,7 @@ public class UniversityCourseSystem {
         return -1;
     }
 
-    private void quickSort(Course[] courseArray, int low, int high) {
+    public void quickSort(Course[] courseArray, int low, int high) {
         if (low < high) {
             int nr = partition(courseArray, low, high);
             quickSort(courseArray, low, nr - 1);
@@ -111,27 +115,7 @@ public class UniversityCourseSystem {
         return recursiveFindMost(list, index + 1, maxCourse);
     }
 
-    public static void main(String[] args) {
-        UniversityCourseSystem system = new UniversityCourseSystem();
-        system.addCourse(new Course("OOP", 3));
-        system.addCourse(new Course("Data Structures and Algorithms", 1));
-        system.addCourse(new Course("Web Programming", 2));
-
-        system.enrollStudent("Web Programming", new Student("Inviona"));
-        system.enrollStudent("Web Programming", new Student("Sindi"));
-        system.enrollStudent("Web Programming", new Student("Uendi"));
-        system.undoLastRegistration();
-
-        system.enrollStudent("OOP", new Student("Juri"));
-
-
-
-
-        system.enrollStudent("OOP", new Student("andi"));
-
-        system.undoLastRegistration();
-
-        Course biggestCourse = system.courseWithMostStudents();
-        System.out.println("Course with most students: " + biggestCourse.name);
+    public LinkedList<Course> getCourseList() {
+        return courseList;
     }
 }
