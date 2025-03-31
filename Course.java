@@ -18,7 +18,6 @@ public class Course {
 
     /**
      * Checks if the course has reached its maximum enrollment capacity.
-     *
      * @return true if course is at capacity, false otherwise
      */
     public boolean isFull() {
@@ -43,7 +42,6 @@ public class Course {
     /**
      * Removes a student from the enrolled list and promotes the first
      * waitlisted student if any are waiting.
-     *
      * @param s The student to remove
      */
     public void removeStudent(Student s) {
@@ -56,8 +54,6 @@ public class Course {
 
     /**
      * Gets the current number of enrolled students.
-     *
-     * @return The number of enrolled students
      */
     public int getEnrolledCount() {
         return enrolled.size();

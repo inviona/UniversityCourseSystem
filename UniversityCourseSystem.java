@@ -12,7 +12,6 @@ public class UniversityCourseSystem {
 
     /**
      * Adds a new course to the system.
-     * @param course The course to be added
      */
     public void addCourse(Course course) {
         courseList.add(course);
@@ -22,8 +21,6 @@ public class UniversityCourseSystem {
      * Enrolls a student in a course or adds them to the waitlist if the course is full.
      * Records the action for potential undo operations.
      *
-     * @param courseName Name of the course to enroll in
-     * @param student Student to be enrolled
      */
     public void enrollStudent(String courseName, Student student) {
         Course course = searchCourse(courseName);
@@ -76,9 +73,6 @@ public class UniversityCourseSystem {
 
     /**
      * Searches for a course by name using binary search on a sorted array.
-     *
-     * @param courseName Name of the course to search for
-     * @return The found Course object or null if not found
      */
     public Course searchCourse(String courseName) {
         Course[] courses = courseList.toArray(new Course[0]);
@@ -96,9 +90,6 @@ public class UniversityCourseSystem {
 
     /**
      * Performs binary search on a sorted array of courses to find a course by name.
-     *
-     * @param courses Sorted array of courses
-     * @param courseName Name of the course to find
      * @return Index of the found course or -1 if not found
      */
     private int binarySearch(Course[] courses, String courseName) {
@@ -135,7 +126,6 @@ public class UniversityCourseSystem {
      * @param courseArray Array of courses
      * @param low Starting index
      * @param high Ending index
-     * @return Partition index
      */
     private int partition(Course[] courseArray, int low, int high) {
         Course pivot = courseArray[high];
@@ -159,8 +149,6 @@ public class UniversityCourseSystem {
 
     /**
      * Finds the course with the highest number of enrolled students using recursion.
-     *
-     * @return Course with the most students
      */
     public Course courseWithMostStudents() {
         return recursiveFindMost(courseList, 0, null);
@@ -168,11 +156,7 @@ public class UniversityCourseSystem {
 
     /**
      * Recursive helper method to find the course with the most students.
-     *
-     * @param list List of courses to search
-     * @param index Current index in the recursion
      * @param maxCourse Current course with maximum enrollment
-     * @return Course with the most students
      */
     private Course recursiveFindMost(List<Course> list, int index, Course maxCourse) {
         // Base case: reached the end of the list
@@ -189,8 +173,6 @@ public class UniversityCourseSystem {
 
     /**
      * Getter for the course list.
-     *
-     * @return LinkedList of all courses in the system
      */
     public LinkedList<Course> getCourseList() {
         return courseList;
